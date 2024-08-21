@@ -1,0 +1,4 @@
+- Ajouter plus de monnaies à convertir 
+- Baser les taux de change sur une API externe
+- Notifications pour les taux de change (dépassement de seuil)
+- Ajouter des graphes de tendance

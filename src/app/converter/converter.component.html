@@ -1,0 +1,65 @@
+<!-- src/app/converter/converter.component.html -->
+<div class="converter">
+  <label>
+    <input
+      type="radio"
+      name="currencyType"
+      [(ngModel)]="currencyType"
+      value="EUR"
+    />
+    EUR to USD
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="currencyType"
+      [(ngModel)]="currencyType"
+      value="USD"
+    />
+    USD to EUR
+  </label>
+
+  <div>
+    <input type="number" [(ngModel)]="inputAmount" placeholder="Enter amount" />
+    <p>
+      Converted Amount: {{ convertedAmount() | number : "1.2-2" }}
+      {{ targetCurrency }}
+    </p>
+  </div>
+
+  <div>
+    <label for="fixedRate">Fixed Rate: </label>
+    <input type="number" id="fixedRate" [(ngModel)]="fixedRate" />
+    <div class="button-container">
+      <button (click)="applyFixedRate()">Apply Fixed Rate</button>
+      <button (click)="clearFixedRate()">Clear Fixed Rate</button>
+    </div>
+  </div>
+
+  <h3>Conversion History</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Real Rate</th>
+        <th>Fixed Rate</th>
+        <th>Input</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of history">
+        <td>{{ entry.realRate }}</td>
+        <td
+          [ngClass]="{
+            highlight: entry.isFixedRateActive && entry.isFixedRateUsed,
+            red: entry.isFixedRateActive && !entry.isFixedRateUsed
+          }"
+        >
+          {{ entry.fixedRate }}
+        </td>
+        <td>{{ entry.input }} {{ entry.inputCurrency }}</td>
+        <td>{{ entry.output }} {{ entry.outputCurrency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
