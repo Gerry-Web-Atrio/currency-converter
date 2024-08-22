@@ -13,8 +13,8 @@ export class CurrencyService {
   public fixedRate = this._fixedRate.asReadonly();
 
   public effectiveRate = computed(() => {
-    const currentRate = this._exchangeRate();
-    const fixedRate = this._fixedRate();
+    const currentRate = this.exchangeRate();
+    const fixedRate = this.fixedRate();
 
     if (fixedRate !== null && Math.abs(fixedRate - currentRate) <= 0.02 * currentRate) {
       return fixedRate;

@@ -30,6 +30,14 @@ th, td {
   text-overflow: ellipsis;
 }
 
+.radio-container{
+  display: flex;
+  justify-content: center;
+  & > * {
+    margin: 1rem;
+  }
+}
+
 .button-container{
   display: flex;
   justify-content: center;

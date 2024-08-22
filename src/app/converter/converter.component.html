@@ -1,23 +1,25 @@
 <!-- src/app/converter/converter.component.html -->
 <div class="converter">
-  <label>
-    <input
-      type="radio"
-      name="currencyType"
-      [(ngModel)]="currencyType"
-      value="EUR"
-    />
-    EUR to USD
-  </label>
-  <label>
-    <input
-      type="radio"
-      name="currencyType"
-      [(ngModel)]="currencyType"
-      value="USD"
-    />
-    USD to EUR
-  </label>
+  <div class="radio-container">
+    <label>
+      <input
+        type="radio"
+        name="currencyType"
+        [(ngModel)]="currencyType"
+        value="EUR"
+      />
+      EUR to USD
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="currencyType"
+        [(ngModel)]="currencyType"
+        value="USD"
+      />
+      USD to EUR
+    </label>
+  </div>
 
   <div>
     <input type="number" [(ngModel)]="inputAmount" placeholder="Enter amount" />

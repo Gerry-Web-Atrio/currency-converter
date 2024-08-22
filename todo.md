@@ -1,3 +1,4 @@
 - Améliorer l'UI un peu simpliste
 - Ne pas utiliser de bouton radio pour changer de divise 
 - Améliorer les tests
+- Empêcher les taux d'aller en dessous de zéro
