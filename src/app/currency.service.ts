@@ -6,8 +6,9 @@ import { interval } from 'rxjs';
   providedIn: 'root'
 })
 export class CurrencyService {
+  private static readonly BASE_RATE = 1.1;
   private destroyRef = inject(DestroyRef)
-  private _exchangeRate = signal(1.1);
+  private _exchangeRate = signal(CurrencyService.BASE_RATE);
   public exchangeRate = this._exchangeRate.asReadonly();
   private _fixedRate = signal<number | null>(null);
   public fixedRate = this._fixedRate.asReadonly();
@@ -32,7 +33,8 @@ export class CurrencyService {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(() => {
       const variation = (Math.random() * 0.1) - 0.05;
-      this._exchangeRate.update(currentRate => currentRate + variation);
+      const newRate = CurrencyService.BASE_RATE + variation;
+      this._exchangeRate.set(newRate);
     });
   }
 
